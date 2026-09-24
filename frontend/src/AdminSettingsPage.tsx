@@ -901,6 +901,7 @@ export default function AdminSettingsPage() {
   const [loading, setLoading] = useState(false);
   const [nests, setNests] = useState<any[]>([]);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const getTabFromPath = (pathname: string) => {
     if (pathname.includes('/advanced')) return 'advanced';
