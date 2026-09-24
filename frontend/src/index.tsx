@@ -21,7 +21,8 @@ import { Extension, ExtensionContext } from 'shared';
 import { useComputedColorScheme, type MantineThemeOverride } from '@mantine/core';
 import { axiosInstance } from '@/api/axios.ts';
 import { useServerStore } from '@/stores/server.ts';
-import { useUserStore } from '@/stores/user.ts';
+import { useQueryClient } from '@tanstack/react-query';
+import { queryKeys } from '@/lib/queryKeys.ts';
 import { bytesToString, mbToBytes } from '@/lib/size.ts';
 import { formatMilliseconds } from '@/lib/time.ts';
 import { formatAllocation } from '@/lib/server.ts';
@@ -301,7 +302,7 @@ async function loadFontCSPFriendly(fontName: string) {
 const QunixThemeLoader: React.FC = () => {
   const computedColorScheme = useComputedColorScheme('dark');
   const [settings, setSettings] = useState<any>(() => (window as any).qunixThemeSettings);
-  const servers = useUserStore((state) => state.servers);
+  const queryClient = useQueryClient();
   const location = useLocation();
 
   useEffect(() => {
@@ -653,6 +654,12 @@ const QunixThemeLoader: React.FC = () => {
     const applyBanners = () => {
       const serverLinks = document.querySelectorAll('a[href^="/server/"]');
       const eggBanners = settings.egg_banners || settings.eggBanners || {};
+      // Every cached dashboard page (all servers and per-group lists) lives under ['user', 'servers'].
+      const servers = queryClient
+        .getQueriesData<{ data?: { uuid: string; uuidShort: string; egg?: { uuid: string } }[] }>({
+          queryKey: queryKeys.user.servers.all(),
+        })
+        .flatMap(([, page]) => (Array.isArray(page?.data) ? page.data : []));
 
       serverLinks.forEach((aEl) => {
         const href = aEl.getAttribute('href') || '';
@@ -660,7 +667,7 @@ const QunixThemeLoader: React.FC = () => {
         const uuidShort = parts[parts.length - 1];
         if (!uuidShort) return;
 
-        const server = servers.data?.find((s: any) => s.uuidShort === uuidShort || s.uuid === uuidShort);
+        const server = servers.find((s) => s.uuidShort === uuidShort || s.uuid === uuidShort);
         if (server && server.egg) {
           const bannerCss = cssUrl(eggBanners[server.egg.uuid]);
           const cardEl = aEl.querySelector('.mantine-Card-root');
@@ -690,7 +697,7 @@ const QunixThemeLoader: React.FC = () => {
       observer.disconnect();
       clearInterval(interval);
     };
-  }, [servers, location.pathname, location.search, settings]);
+  }, [queryClient, location.pathname, location.search, settings]);
 
   return null;
 };
