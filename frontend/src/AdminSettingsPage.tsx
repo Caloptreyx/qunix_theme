@@ -2002,6 +2002,9 @@ export default function AdminSettingsPage() {
             );
           })}
         </div>
+
+        {/* Bottom: spacer matching the back button so the tabs stay vertically centered */}
+        <div aria-hidden style={{ width: '40px', height: '40px' }} />
       </div>
 
       {/* 2. Middle Form Pane */}
