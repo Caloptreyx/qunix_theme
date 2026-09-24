@@ -25,6 +25,7 @@ export const qunixThemeSettingsSchema = z.object({
   sidebar_item_gap: z.number().min(0).max(100),
   sidebar_animation: z.boolean(),
   background_image: url.optional(),
+  favicon_url: url.optional(),
   sidebar_blur: z.number().min(0).max(50),
   wallpaper_blur: z.number().min(0).max(50),
   wallpaper_brightness: z.number().min(0).max(1),
@@ -130,7 +131,7 @@ export const qunixThemeSettingsSchema = z.object({
   page_title_icon: z.boolean(),
 });
 
-const URL_KEYS = ['background_image', 'light_background_image', 'announcement_cta_link'] as const;
+const URL_KEYS = ['background_image', 'light_background_image', 'favicon_url', 'announcement_cta_link'] as const;
 const COLOR_KEYS = Object.entries(qunixThemeSettingsSchema.shape)
   .filter(([, schema]) => schema === color)
   .map(([key]) => key);

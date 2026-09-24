@@ -655,7 +655,7 @@ import getAllEggs from '@/api/admin/nests/getAllEggs.ts';
 import Button from '@/elements/Button.tsx';
 import { useToast } from '@/providers/ToastProvider.tsx';
 import { qunixThemeSettingsSchema } from './lib/schemas.ts';
-import { cssUrl } from './lib/validation.ts';
+import { cssUrl, isSafeUrl } from './lib/validation.ts';
 
 function hslToHex(colorStr: string | undefined | null): string {
   if (!colorStr) return '';
@@ -952,6 +952,7 @@ export default function AdminSettingsPage() {
     sidebar_item_gap: 4,
     sidebar_animation: true,
     background_image: '',
+    favicon_url: '',
     sidebar_blur: 0,
     wallpaper_blur: 0,
     wallpaper_brightness: 1.0,
@@ -1312,6 +1313,7 @@ export default function AdminSettingsPage() {
                 ? s.sidebarAnimation
                 : true,
           background_image: s.background_image || s.backgroundImage || '',
+          favicon_url: s.favicon_url || '',
           sidebar_blur: s.sidebar_blur !== undefined ? s.sidebar_blur : s.sidebarBlur !== undefined ? s.sidebarBlur : 0,
           wallpaper_blur:
             s.wallpaper_blur !== undefined ? s.wallpaper_blur : s.wallpaperBlur !== undefined ? s.wallpaperBlur : 0,
@@ -1738,6 +1740,7 @@ export default function AdminSettingsPage() {
       sidebar_item_gap: 6,
       sidebar_animation: true,
       background_image: '',
+      favicon_url: '',
       sidebar_blur: 0,
       wallpaper_blur: 0,
       wallpaper_brightness: 1.0,
@@ -2555,6 +2558,18 @@ export default function AdminSettingsPage() {
                           )}
                         </div>
                       </div>
+
+                      <TextInput
+                        label='Favicon URL'
+                        description='Browser tab icon. Leave empty to use the panel icon.'
+                        placeholder='https://example.com/favicon.png'
+                        leftSection={
+                          form.values.favicon_url && isSafeUrl(form.values.favicon_url) ? (
+                            <img src={form.values.favicon_url} alt='' width={16} height={16} />
+                          ) : undefined
+                        }
+                        {...form.getInputProps('favicon_url')}
+                      />
 
                       <Group grow>
                         <NumberInput

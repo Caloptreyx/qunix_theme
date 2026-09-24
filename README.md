@@ -6,6 +6,7 @@ A premium, highly customizable theme extension for the Calagopus Panel. Control 
 
 * **Dynamic Backgrounds:** Support for custom wallpaper URLs with adjustable **Blur** and **Brightness** filters.
 * **Glassmorphism UI:** Integrated **Glass Transparency** and **Shadow Opacity** controls for a modern, frosted-glass aesthetic.
+* **Custom Favicon:** Set your own browser tab icon, separate from the panel logo.
 * **Global Color Management:** Easily customize Background, Text, Focus, and Border colors across the entire panel.
 * **Precision Layout:** Fine-tune **Navbar Height**, **Sidebar Gap**, and **Corner Radius** (Cards, Inputs, Buttons) in pixels.
 * **Modular Overrides:** Dedicated settings for Terminal, Code Editor, and List/Table views.

@@ -115,6 +115,8 @@ mod put {
         #[serde(alias = "backgroundImage")]
         #[garde(inner(custom(crate::validation::safe_url)))]
         pub background_image: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::safe_url)))]
+        pub favicon_url: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarBlur")]
         #[garde(range(min = 0, max = 50))]
         pub sidebar_blur: Option<i32>,
@@ -464,6 +466,9 @@ mod put {
         }
         if let Some(image) = data.background_image {
             ext_settings.background_image = Some(image);
+        }
+        if let Some(favicon) = data.favicon_url {
+            ext_settings.favicon_url = Some(favicon);
         }
         if let Some(blur) = data.sidebar_blur {
             ext_settings.sidebar_blur = blur;

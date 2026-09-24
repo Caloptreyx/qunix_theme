@@ -27,6 +27,7 @@ pub struct QunixThemeSettingsData {
     pub sidebar_item_gap: i32,
     pub sidebar_animation: bool,
     pub background_image: Option<compact_str::CompactString>,
+    pub favicon_url: Option<compact_str::CompactString>,
     pub sidebar_blur: i32,
     pub wallpaper_blur: i32,
     pub wallpaper_brightness: f32,
@@ -152,6 +153,7 @@ impl Default for QunixThemeSettingsData {
             sidebar_item_gap: 6,
             sidebar_animation: true,
             background_image: None,
+            favicon_url: None,
             sidebar_blur: 0,
             wallpaper_blur: 0,
             wallpaper_brightness: 1.0,
@@ -287,6 +289,10 @@ impl SettingsSerializeExt for QunixThemeSettingsData {
                     .clone()
                     .unwrap_or_default()
                     .to_string(),
+            )
+            .write_raw_setting(
+                "favicon_url",
+                self.favicon_url.clone().unwrap_or_default().to_string(),
             )
             .write_raw_setting("sidebar_blur", self.sidebar_blur.to_string())
             .write_raw_setting("wallpaper_blur", self.wallpaper_blur.to_string())
@@ -479,6 +485,7 @@ impl SettingsDeserializeExt for QunixThemeSettingsDataDeserializer {
                 .unwrap_or(default.sidebar_animation),
             background_image: deserializer
                 .take_raw_setting("background_image"),
+            favicon_url: deserializer.take_raw_setting("favicon_url"),
             sidebar_blur: deserializer
                 .take_raw_setting("sidebar_blur")
                 .and_then(|s| s.parse().ok())

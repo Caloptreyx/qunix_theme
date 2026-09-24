@@ -21,6 +21,7 @@ import { Extension, ExtensionContext } from 'shared';
 import { useComputedColorScheme, type MantineThemeOverride } from '@mantine/core';
 import { axiosInstance } from '@/api/axios.ts';
 import { useServerStore } from '@/stores/server.ts';
+import { useGlobalStore } from '@/stores/global.ts';
 import { useQueryClient } from '@tanstack/react-query';
 import { queryKeys } from '@/lib/queryKeys.ts';
 import { bytesToString, mbToBytes } from '@/lib/size.ts';
@@ -30,6 +31,7 @@ import ConfigurationPage from './ConfigurationPage.tsx';
 import AdminSettingsPage from './AdminSettingsPage.tsx';
 import { sanitizeThemeSettings } from './lib/schemas.ts';
 import { cssUrl, isSafeUrl } from './lib/validation.ts';
+import { applyFavicon } from './lib/favicon.ts';
 import Alert from '@/elements/Alert.tsx';
 import pkg from '../package.json';
 import './app.css';
@@ -303,6 +305,7 @@ const QunixThemeLoader: React.FC = () => {
   const computedColorScheme = useComputedColorScheme('dark');
   const [settings, setSettings] = useState<any>(() => (window as any).qunixThemeSettings);
   const queryClient = useQueryClient();
+  const appIcon = useGlobalStore((state) => state.settings?.app?.icon);
   const location = useLocation();
 
   useEffect(() => {
@@ -646,6 +649,10 @@ const QunixThemeLoader: React.FC = () => {
       root.style.setProperty('--ds-font-family', "'JetBrains Mono', monospace");
     }
   }, [computedColorScheme, settings]);
+
+  useEffect(() => {
+    applyFavicon(settings?.favicon_url, appIcon);
+  }, [settings?.favicon_url, appIcon]);
 
   // Apply egg banners to server listing dashboard cards dynamically
   useEffect(() => {
