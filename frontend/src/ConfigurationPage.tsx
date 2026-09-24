@@ -1685,8 +1685,9 @@ export default function ConfigurationPage() {
       .put('/api/admin/extensions/dev.qunix.theme/settings', payload)
       .then((res) => {
         console.log('QUNIX_THEME: Save successful:', res.data);
+        form.setInitialValues(payload);
+        form.resetDirty(payload);
         addToast('Theme settings saved. Refresh the page to apply.', 'success');
-        form.initialize(payload);
       })
       .catch((err) => {
         console.error('QUNIX_THEME: Save failed:', err);
@@ -1831,6 +1832,8 @@ export default function ConfigurationPage() {
     axiosInstance
       .put('/api/admin/extensions/dev.qunix.theme/settings', defaultSettings)
       .then((res) => {
+        form.setInitialValues(defaultSettings);
+        form.resetDirty(defaultSettings);
         addToast('Theme settings reset to default. Refresh the page to apply.', 'success');
       })
       .catch((err) => {

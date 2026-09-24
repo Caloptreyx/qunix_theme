@@ -628,7 +628,6 @@ import {
   faWindowMaximize,
   faImage,
   faArrowLeft,
-  faSave,
   faUpload,
   faDownload,
   faRotateLeft,
@@ -1704,8 +1703,9 @@ export default function AdminSettingsPage() {
     axiosInstance
       .put('/api/admin/extensions/dev.qunix.theme/settings', payload)
       .then(() => {
+        form.setInitialValues(payload);
+        form.resetDirty(payload);
         addToast('Theme settings saved successfully.', 'success');
-        form.initialize(payload);
       })
       .catch((err) => {
         console.error(err);
@@ -1850,6 +1850,8 @@ export default function AdminSettingsPage() {
     axiosInstance
       .put('/api/admin/extensions/dev.qunix.theme/settings', defaultSettings)
       .then(() => {
+        form.setInitialValues(defaultSettings);
+        form.resetDirty(defaultSettings);
         addToast('Theme settings reset to default.', 'success');
       })
       .catch((err) => addToast(httpErrorToHuman(err), 'error'))
@@ -1997,35 +1999,6 @@ export default function AdminSettingsPage() {
             );
           })}
         </div>
-
-        {/* Bottom: Save Button */}
-        <button
-          onClick={doSave}
-          title='Save Settings'
-          style={{
-            width: '40px',
-            height: '40px',
-            background: 'rgba(92, 124, 250, 0.15)',
-            border: '1px solid rgba(92, 124, 250, 0.3)',
-            borderRadius: '8px',
-            color: '#5c7cfa',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            transition: 'all 0.2s',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = '#5c7cfa';
-            e.currentTarget.style.color = '#fff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(92, 124, 250, 0.15)';
-            e.currentTarget.style.color = '#5c7cfa';
-          }}
-        >
-          <FontAwesomeIcon icon={faSave} />
-        </button>
       </div>
 
       {/* 2. Middle Form Pane */}
@@ -3196,29 +3169,6 @@ export default function AdminSettingsPage() {
             </Stack>
           </form>
         </ScrollArea>
-
-        {/* Global form tools */}
-        <div
-          style={{
-            borderTop: '1px solid #111114',
-            padding: '16px 24px',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '8px',
-            background: '#040405',
-          }}
-        >
-          <Button
-            onClick={doSave}
-            loading={loading}
-            variant='filled'
-            color='indigo'
-            leftSection={<FontAwesomeIcon icon={faSave} />}
-            styles={{ root: { fontSize: '11px', height: '36px', borderRadius: '8px' } }}
-          >
-            Save Settings
-          </Button>
-        </div>
       </div>
 
       {/* 3. Live Preview Iframe */}
