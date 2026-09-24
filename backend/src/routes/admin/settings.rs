@@ -53,6 +53,7 @@ mod put {
     use utoipa::ToSchema;
 
     #[derive(ToSchema, Validate, Deserialize)]
+    #[serde(deny_unknown_fields)]
     pub struct Payload {
         #[serde(alias = "backgroundColor")]
         #[garde(inner(custom(crate::validation::css_color)))]
@@ -321,6 +322,63 @@ mod put {
         #[serde(alias = "pageTitleIcon", alias = "page_title_icon")]
         #[garde(skip)]
         pub page_title_icon: Option<bool>,
+        // Terminal and chart colours
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_cursor_color: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_selection_color: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_black: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_red: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_green: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_yellow: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_blue: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_magenta: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_cyan: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub terminal_ansi_white: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub chart_series_1_border: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub chart_series_1_fill: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub chart_series_2_border: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub chart_series_2_fill: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_cursor_color: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_selection_color: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_black: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_red: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_green: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_yellow: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_blue: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_magenta: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_cyan: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_terminal_ansi_white: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_chart_series_1_border: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_chart_series_1_fill: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_chart_series_2_border: Option<compact_str::CompactString>,
+        #[garde(inner(custom(crate::validation::css_color)))]
+        pub light_chart_series_2_fill: Option<compact_str::CompactString>,
     }
 
     #[utoipa::path(
@@ -615,6 +673,90 @@ mod put {
             ext_settings.page_title_icon = pti;
         }
 
+        if let Some(value) = data.terminal_cursor_color {
+            ext_settings.terminal_cursor_color = value;
+        }
+        if let Some(value) = data.terminal_selection_color {
+            ext_settings.terminal_selection_color = value;
+        }
+        if let Some(value) = data.terminal_ansi_black {
+            ext_settings.terminal_ansi_black = value;
+        }
+        if let Some(value) = data.terminal_ansi_red {
+            ext_settings.terminal_ansi_red = value;
+        }
+        if let Some(value) = data.terminal_ansi_green {
+            ext_settings.terminal_ansi_green = value;
+        }
+        if let Some(value) = data.terminal_ansi_yellow {
+            ext_settings.terminal_ansi_yellow = value;
+        }
+        if let Some(value) = data.terminal_ansi_blue {
+            ext_settings.terminal_ansi_blue = value;
+        }
+        if let Some(value) = data.terminal_ansi_magenta {
+            ext_settings.terminal_ansi_magenta = value;
+        }
+        if let Some(value) = data.terminal_ansi_cyan {
+            ext_settings.terminal_ansi_cyan = value;
+        }
+        if let Some(value) = data.terminal_ansi_white {
+            ext_settings.terminal_ansi_white = value;
+        }
+        if let Some(value) = data.chart_series_1_border {
+            ext_settings.chart_series_1_border = value;
+        }
+        if let Some(value) = data.chart_series_1_fill {
+            ext_settings.chart_series_1_fill = value;
+        }
+        if let Some(value) = data.chart_series_2_border {
+            ext_settings.chart_series_2_border = value;
+        }
+        if let Some(value) = data.chart_series_2_fill {
+            ext_settings.chart_series_2_fill = value;
+        }
+        if let Some(value) = data.light_terminal_cursor_color {
+            ext_settings.light_terminal_cursor_color = value;
+        }
+        if let Some(value) = data.light_terminal_selection_color {
+            ext_settings.light_terminal_selection_color = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_black {
+            ext_settings.light_terminal_ansi_black = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_red {
+            ext_settings.light_terminal_ansi_red = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_green {
+            ext_settings.light_terminal_ansi_green = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_yellow {
+            ext_settings.light_terminal_ansi_yellow = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_blue {
+            ext_settings.light_terminal_ansi_blue = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_magenta {
+            ext_settings.light_terminal_ansi_magenta = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_cyan {
+            ext_settings.light_terminal_ansi_cyan = value;
+        }
+        if let Some(value) = data.light_terminal_ansi_white {
+            ext_settings.light_terminal_ansi_white = value;
+        }
+        if let Some(value) = data.light_chart_series_1_border {
+            ext_settings.light_chart_series_1_border = value;
+        }
+        if let Some(value) = data.light_chart_series_1_fill {
+            ext_settings.light_chart_series_1_fill = value;
+        }
+        if let Some(value) = data.light_chart_series_2_border {
+            ext_settings.light_chart_series_2_border = value;
+        }
+        if let Some(value) = data.light_chart_series_2_fill {
+            ext_settings.light_chart_series_2_fill = value;
+        }
 
         settings.save().await?;
 
