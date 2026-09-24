@@ -29,7 +29,7 @@ A premium, highly customizable theme extension for the Calagopus Panel. Control 
 
 ### 📋 Requirements
 
-* **Calagopus Panel:** v1.0.0 or higher.
+* **Calagopus Panel:** v1.1.0 or higher.
 
 
 
