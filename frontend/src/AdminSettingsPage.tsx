@@ -1140,6 +1140,11 @@ export default function AdminSettingsPage() {
           background: #000000 !important;
         }
 
+        /* Panel toasts (fixed z-999) would render behind this z-9999 page; lift them above it and the unsaved bar. */
+        body.qunix-settings-active .fixed.z-999 {
+          z-index: 10001 !important;
+        }
+
         body.qunix-settings-active, 
         body.qunix-settings-active html, 
         body.qunix-settings-active #root, 
