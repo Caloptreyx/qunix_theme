@@ -25,7 +25,7 @@ mod get {
         ),
     )]
     pub async fn route(state: GetState, permissions: GetPermissionManager) -> ApiResponseResult {
-        permissions.has_admin_permission("extensions.qunix.theme.read")?;
+        permissions.has_admin_permission("qunix-theme.read")?;
         let settings = state.settings.get().await?;
         let ext_settings: &QunixThemeSettingsData = settings.find_extension_settings()?;
 
@@ -394,13 +394,13 @@ mod put {
         permissions: GetPermissionManager,
         shared::Payload(data): shared::Payload<Payload>,
     ) -> ApiResponseResult {
+        permissions.has_admin_permission("qunix-theme.update")?;
+
         if let Err(errors) = shared::utils::validate_data(&data) {
             return ApiResponse::new_serialized(shared::ApiError::new_strings_value(errors))
                 .with_status(axum::http::StatusCode::BAD_REQUEST)
                 .ok();
         }
-
-        permissions.has_admin_permission("extensions.qunix.theme.write")?;
 
         let mut settings = state.settings.get_mut().await?;
         let ext_settings: &mut QunixThemeSettingsData = settings.find_mut_extension_settings()?;

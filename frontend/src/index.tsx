@@ -1063,12 +1063,14 @@ class QunixThemeExtension extends Extension {
       }
     });
 
+    ctx.extensionRegistry.permissionIcons.addAdminPermissionIcon('qunix-theme', <FontAwesomeIcon icon={faPalette} />);
+
     ctx.extensionRegistry.routes.addAdminRoute({
       name: 'Qunix Theme',
       icon: faPalette,
       path: '/qunix-settings/*',
       element: AdminSettingsPage,
-      permission: ['extensions.qunix.theme.read'],
+      permission: ['qunix-theme.read'],
     });
 
     ctx.extensionRegistry.pages.server.prependComponent(ServerBannerComponent);

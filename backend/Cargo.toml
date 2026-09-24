@@ -16,3 +16,4 @@ utoipa = { workspace = true }
 utoipa-axum = { workspace = true }
 axum = { workspace = true }
 garde = { workspace = true }
+indexmap = { workspace = true }

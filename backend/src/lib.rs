@@ -1,6 +1,8 @@
+use indexmap::IndexMap;
 use shared::{
     State,
-    extensions::{Extension, ExtensionRouteBuilder},
+    extensions::{Extension, ExtensionPermissionsBuilder, ExtensionRouteBuilder},
+    permissions::PermissionGroup,
 };
 use std::sync::Arc;
 
@@ -22,6 +24,23 @@ impl Extension for ExtensionStruct {
         _state: State,
     ) -> shared::extensions::settings::ExtensionSettingsDeserializer {
         Arc::new(settings::QunixThemeSettingsDataDeserializer)
+    }
+
+    async fn initialize_permissions(
+        &mut self,
+        _state: State,
+        builder: ExtensionPermissionsBuilder,
+    ) -> ExtensionPermissionsBuilder {
+        builder.add_admin_permission_group(
+            "qunix-theme",
+            PermissionGroup {
+                description: "Permissions that control the ability to manage the Qunix Theme settings.",
+                permissions: IndexMap::from([
+                    ("read", "Allows viewing the Qunix Theme settings page."),
+                    ("update", "Allows modifying the Qunix Theme settings."),
+                ]),
+            },
+        )
     }
 
     async fn initialize_router(

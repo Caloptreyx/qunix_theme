@@ -25,6 +25,7 @@ A premium, highly customizable theme extension for the Calagopus Panel. Control 
 3. Upload the `.c7s.zip` file.
 4. Click **Rebuild Extensions** and wait for completion.
 5. Access customization via **Admin > Qunix Theme Settings**.
+6. Admins without full admin rights need the **Qunix Theme** permissions (`qunix-theme.read` to view, `qunix-theme.update` to save) on their role.
 
 ### 📋 Requirements
 
