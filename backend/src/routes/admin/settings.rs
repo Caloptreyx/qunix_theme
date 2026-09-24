@@ -55,13 +55,13 @@ mod put {
     #[derive(ToSchema, Validate, Deserialize)]
     pub struct Payload {
         #[serde(alias = "backgroundColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub background_color: Option<compact_str::CompactString>,
         #[serde(alias = "textColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub text_color: Option<compact_str::CompactString>,
         #[serde(alias = "focusColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub focus_color: Option<compact_str::CompactString>,
         #[serde(alias = "shadowOpacity")]
         #[garde(range(min = 0.0, max = 1.0))]
@@ -70,28 +70,28 @@ mod put {
         #[garde(length(chars, min = 1, max = 100))]
         pub font_family: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub sidebar_color: Option<compact_str::CompactString>,
         #[serde(alias = "cardColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub card_color: Option<compact_str::CompactString>,
         #[serde(alias = "borderColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub border_color: Option<compact_str::CompactString>,
         #[serde(alias = "borderRadius")]
         #[garde(range(min = 0, max = 100))]
         pub border_radius: Option<i32>,
         #[serde(alias = "navbarColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub navbar_color: Option<compact_str::CompactString>,
         #[serde(alias = "terminalColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub terminal_color: Option<compact_str::CompactString>,
         #[serde(alias = "terminalTextColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub terminal_text_color: Option<compact_str::CompactString>,
         #[serde(alias = "inputColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub input_color: Option<compact_str::CompactString>,
         #[serde(alias = "buttonRadius")]
         #[garde(range(min = 0, max = 100))]
@@ -112,7 +112,7 @@ mod put {
         #[garde(skip)]
         pub sidebar_animation: Option<bool>,
         #[serde(alias = "backgroundImage")]
-        #[garde(skip)]
+        #[garde(inner(custom(crate::validation::safe_url)))]
         pub background_image: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarBlur")]
         #[garde(range(min = 0, max = 50))]
@@ -127,124 +127,124 @@ mod put {
         #[garde(range(min = 0, max = 100))]
         pub glass_transparency: Option<i32>,
         #[serde(alias = "editorColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub editor_color: Option<compact_str::CompactString>,
         #[serde(alias = "editorTextColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub editor_text_color: Option<compact_str::CompactString>,
         #[serde(alias = "listingColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub listing_color: Option<compact_str::CompactString>,
         #[serde(alias = "buttonColor")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub button_color: Option<compact_str::CompactString>,
         #[serde(alias = "serverActionBg", alias = "serverActionColor", alias = "server_action_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub server_action_bg: Option<compact_str::CompactString>,
         #[serde(alias = "powerStartBg", alias = "power_start_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub power_start_bg: Option<compact_str::CompactString>,
         #[serde(alias = "powerRestartBg", alias = "power_restart_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub power_restart_bg: Option<compact_str::CompactString>,
         #[serde(alias = "powerStopBg", alias = "power_stop_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub power_stop_bg: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarActiveColor", alias = "sidebar_active_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub sidebar_active_color: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarActiveBg", alias = "sidebar_active_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub sidebar_active_bg: Option<compact_str::CompactString>,
         #[serde(alias = "sidebarItemHeight", alias = "sidebar_active_height")]
         #[garde(range(min = 20, max = 100))]
         pub sidebar_item_height: Option<i32>,
         #[serde(alias = "eggBanners")]
-        #[garde(skip)]
+        #[garde(inner(custom(crate::validation::egg_banners)))]
         pub egg_banners: Option<std::collections::HashMap<compact_str::CompactString, compact_str::CompactString>>,
 
         // Light Mode Payload Fields
         #[serde(alias = "lightBackgroundColor", alias = "light_background_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_background_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightTextColor", alias = "light_text_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_text_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightFocusColor", alias = "light_focus_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_focus_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightShadowOpacity", alias = "light_shadow_opacity")]
         #[garde(range(min = 0.0, max = 1.0))]
         pub light_shadow_opacity: Option<f32>,
         #[serde(alias = "lightSidebarColor", alias = "light_sidebar_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_sidebar_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightCardColor", alias = "light_card_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_card_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightBorderColor", alias = "light_border_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_border_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightNavbarColor", alias = "light_navbar_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_navbar_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightTerminalColor", alias = "light_terminal_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_terminal_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightTerminalTextColor", alias = "light_terminal_text_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_terminal_text_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightInputColor", alias = "light_input_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_input_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightBackgroundImage", alias = "light_background_image")]
-        #[garde(skip)]
+        #[garde(inner(custom(crate::validation::safe_url)))]
         pub light_background_image: Option<compact_str::CompactString>,
         #[serde(alias = "lightEditorColor", alias = "light_editor_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_editor_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightEditorTextColor", alias = "light_editor_text_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_editor_text_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightListingColor", alias = "light_listing_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_listing_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightButtonColor", alias = "light_button_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_button_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightServerActionBg", alias = "light_server_action_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_server_action_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightPowerStartBg", alias = "light_power_start_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_power_start_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightPowerRestartBg", alias = "light_power_restart_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_power_restart_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightPowerStopBg", alias = "light_power_stop_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_power_stop_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightSidebarActiveColor", alias = "light_sidebar_active_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_sidebar_active_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightSidebarActiveBg", alias = "light_sidebar_active_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_sidebar_active_bg: Option<compact_str::CompactString>,
 
         #[serde(alias = "announcementBg", alias = "announcement_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub announcement_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightAnnouncementBg", alias = "light_announcement_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_announcement_bg: Option<compact_str::CompactString>,
         #[serde(alias = "announcementBlur", alias = "announcement_blur")]
         #[garde(range(min = 0, max = 100))]
         pub announcement_blur: Option<i32>,
         #[serde(alias = "announcementBorderColor", alias = "announcement_border_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub announcement_border_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightAnnouncementBorderColor", alias = "light_announcement_border_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_announcement_border_color: Option<compact_str::CompactString>,
         #[serde(alias = "announcementRadius", alias = "announcement_radius")]
         #[garde(range(min = 0, max = 100))]
@@ -253,22 +253,22 @@ mod put {
         #[garde(skip)]
         pub announcement_cta: Option<bool>,
         #[serde(alias = "announcementCtaBg", alias = "announcement_cta_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub announcement_cta_bg: Option<compact_str::CompactString>,
         #[serde(alias = "lightAnnouncementCtaBg", alias = "light_announcement_cta_bg")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_announcement_cta_bg: Option<compact_str::CompactString>,
         #[serde(alias = "announcementCtaColor", alias = "announcement_cta_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub announcement_cta_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightAnnouncementCtaColor", alias = "light_announcement_cta_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_announcement_cta_color: Option<compact_str::CompactString>,
         #[serde(alias = "announcementCtaRadius", alias = "announcement_cta_radius")]
         #[garde(range(min = 0, max = 100))]
         pub announcement_cta_radius: Option<i32>,
         #[serde(alias = "announcementCtaLink", alias = "announcement_cta_link")]
-        #[garde(skip)]
+        #[garde(inner(custom(crate::validation::safe_url)))]
         pub announcement_cta_link: Option<compact_str::CompactString>,
         #[serde(alias = "announcementCtaText", alias = "announcement_cta_text")]
         #[garde(skip)]
@@ -289,16 +289,16 @@ mod put {
         #[garde(skip)]
         pub toast_background_tint: Option<bool>,
         #[serde(alias = "dark7Color", alias = "dark_7_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub dark_7_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightDark7Color", alias = "light_dark_7_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_dark_7_color: Option<compact_str::CompactString>,
         #[serde(alias = "dark6Color", alias = "dark_6_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub dark_6_color: Option<compact_str::CompactString>,
         #[serde(alias = "lightDark6Color", alias = "light_dark_6_color")]
-        #[garde(length(chars, min = 4, max = 100))]
+        #[garde(inner(custom(crate::validation::css_color)))]
         pub light_dark_6_color: Option<compact_str::CompactString>,
         #[serde(alias = "listingRadius", alias = "listing_radius")]
         #[garde(range(min = 0, max = 100))]
@@ -614,6 +614,7 @@ mod put {
         if let Some(pti) = data.page_title_icon {
             ext_settings.page_title_icon = pti;
         }
+
 
         settings.save().await?;
 

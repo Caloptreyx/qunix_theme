@@ -27,6 +27,8 @@ import { formatMilliseconds } from '@/lib/time.ts';
 import { formatAllocation } from '@/lib/server.ts';
 import ConfigurationPage from './ConfigurationPage.tsx';
 import AdminSettingsPage from './AdminSettingsPage.tsx';
+import { sanitizeThemeSettings } from './lib/schemas.ts';
+import { cssUrl, isSafeUrl } from './lib/validation.ts';
 import Alert from '@/elements/Alert.tsx';
 import pkg from '../package.json';
 import './app.css';
@@ -121,7 +123,7 @@ const ServerBannerComponent: React.FC = () => {
     axiosInstance
       .get('/api/dev.qunix.theme/settings')
       .then((res) => {
-        const s = res.data.settings;
+        const s = sanitizeThemeSettings(res.data.settings);
         setSettings(s);
         (window as any).qunixThemeSettings = s;
         window.dispatchEvent(new CustomEvent('qunix-settings-loaded', { detail: s }));
@@ -129,8 +131,9 @@ const ServerBannerComponent: React.FC = () => {
         const root = document.documentElement;
         const eggBanners = s.egg_banners || s.eggBanners || {};
         for (const [eggUuid, bannerUrl] of Object.entries(eggBanners)) {
-          if (bannerUrl) {
-            root.style.setProperty(`--ds-egg-banner-${eggUuid}`, `url(${bannerUrl})`);
+          const bannerCss = cssUrl(bannerUrl);
+          if (bannerCss) {
+            root.style.setProperty(`--ds-egg-banner-${eggUuid}`, bannerCss);
           }
         }
       })
@@ -158,10 +161,10 @@ const ServerBannerComponent: React.FC = () => {
     }
 
     const eggBanners = settings.egg_banners || settings.eggBanners || {};
-    const bannerUrl = eggBanners[server.egg.uuid];
+    const bannerCss = cssUrl(eggBanners[server.egg.uuid]);
 
-    if (bannerUrl) {
-      root.style.setProperty('--ds-server-banner-image', `url(${bannerUrl})`);
+    if (bannerCss) {
+      root.style.setProperty('--ds-server-banner-image', bannerCss);
       root.classList.add('has-server-banner');
       setHasBanner(true);
     } else {
@@ -612,8 +615,9 @@ const QunixThemeLoader: React.FC = () => {
       root.style.setProperty('--ds-wallpaper-brightness', `${wallpaperBrightness}`);
     if (glassTransparency !== undefined) root.style.setProperty('--ds-glass-transparency', `${glassTransparency}%`);
 
-    if (backgroundImage) {
-      root.style.setProperty('--ds-background-image', `url(${backgroundImage})`);
+    const backgroundCss = cssUrl(backgroundImage);
+    if (backgroundCss) {
+      root.style.setProperty('--ds-background-image', backgroundCss);
       root.classList.add('has-bg-image');
       document.body.classList.add('has-bg-image');
     } else {
@@ -658,12 +662,12 @@ const QunixThemeLoader: React.FC = () => {
 
         const server = servers.data?.find((s: any) => s.uuidShort === uuidShort || s.uuid === uuidShort);
         if (server && server.egg) {
-          const bannerUrl = eggBanners[server.egg.uuid];
+          const bannerCss = cssUrl(eggBanners[server.egg.uuid]);
           const cardEl = aEl.querySelector('.mantine-Card-root');
           if (cardEl) {
-            if (bannerUrl) {
+            if (bannerCss) {
               cardEl.classList.add('qunix-server-card', 'has-banner');
-              (cardEl as HTMLElement).style.setProperty('--ds-egg-banner-image', `url(${bannerUrl})`);
+              (cardEl as HTMLElement).style.setProperty('--ds-egg-banner-image', bannerCss);
             } else {
               cardEl.classList.remove('qunix-server-card', 'has-banner');
               (cardEl as HTMLElement).style.removeProperty('--ds-egg-banner-image');
@@ -992,7 +996,8 @@ class QunixThemeExtension extends Extension {
       if (props.className && props.className.includes('mx-6')) {
         const s = (window as any).qunixThemeSettings;
         const ctaEnabled = s?.announcement_cta !== false && s?.announcementCta !== false;
-        const ctaLink = s?.announcement_cta_link || s?.announcementCtaLink;
+        const rawCtaLink = s?.announcement_cta_link || s?.announcementCtaLink;
+        const ctaLink = typeof rawCtaLink === 'string' && isSafeUrl(rawCtaLink) ? rawCtaLink : undefined;
         const ctaText = s?.announcement_cta_text || s?.announcementCtaText || 'Go to link...';
 
         if (ctaLink && ctaEnabled) {
@@ -1239,15 +1244,16 @@ class QunixThemeExtension extends Extension {
     axiosInstance
       .get('/api/dev.qunix.theme/settings')
       .then((res) => {
-        const s = res.data.settings;
+        const s = sanitizeThemeSettings(res.data.settings);
         (window as any).qunixThemeSettings = s;
         window.dispatchEvent(new CustomEvent('qunix-settings-loaded', { detail: s }));
 
         const root = document.documentElement;
         const eggBanners = s.egg_banners || s.eggBanners || {};
         for (const [eggUuid, bannerUrl] of Object.entries(eggBanners)) {
-          if (bannerUrl) {
-            root.style.setProperty(`--ds-egg-banner-${eggUuid}`, `url(${bannerUrl})`);
+          const bannerCss = cssUrl(bannerUrl);
+          if (bannerCss) {
+            root.style.setProperty(`--ds-egg-banner-${eggUuid}`, bannerCss);
           }
         }
       })

@@ -6,6 +6,7 @@ use std::sync::Arc;
 
 mod routes;
 mod settings;
+mod validation;
 
 #[derive(Default)]
 pub struct ExtensionStruct;

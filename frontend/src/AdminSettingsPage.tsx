@@ -656,6 +656,7 @@ import getAllEggs from '@/api/admin/nests/getAllEggs.ts';
 import Button from '@/elements/Button.tsx';
 import { useToast } from '@/providers/ToastProvider.tsx';
 import { qunixThemeSettingsSchema } from './lib/schemas.ts';
+import { cssUrl } from './lib/validation.ts';
 
 function hslToHex(colorStr: string | undefined | null): string {
   if (!colorStr) return '';
@@ -1616,8 +1617,9 @@ export default function AdminSettingsPage() {
         root.style.setProperty('--ds-sidebar-active-radius', `${s.sidebar_active_radius}px`);
 
       if (backgroundImage !== undefined) {
-        if (backgroundImage) {
-          root.style.setProperty('--ds-background-image', `url(${backgroundImage})`);
+        const backgroundCss = cssUrl(backgroundImage);
+        if (backgroundCss) {
+          root.style.setProperty('--ds-background-image', backgroundCss);
           root.classList.add('has-bg-image');
           iframeDoc.body.classList.add('has-bg-image');
         } else {
@@ -2505,8 +2507,8 @@ export default function AdminSettingsPage() {
                             width: '100%',
                             borderRadius: '6px',
                             border: '1px solid #2d2d30',
-                            backgroundImage: form.values.background_image
-                              ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), url(${form.values.background_image})`
+                            backgroundImage: cssUrl(form.values.background_image)
+                              ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), ${cssUrl(form.values.background_image)}`
                               : 'none',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
@@ -2544,8 +2546,8 @@ export default function AdminSettingsPage() {
                             width: '100%',
                             borderRadius: '6px',
                             border: '1px solid #2d2d30',
-                            backgroundImage: form.values.light_background_image
-                              ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), url(${form.values.light_background_image})`
+                            backgroundImage: cssUrl(form.values.light_background_image)
+                              ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), ${cssUrl(form.values.light_background_image)}`
                               : 'none',
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
@@ -2752,8 +2754,8 @@ export default function AdminSettingsPage() {
                                     width: '100%',
                                     borderRadius: '6px',
                                     border: '1px solid #2d2d30',
-                                    backgroundImage: bannerUrl
-                                      ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), url(${bannerUrl})`
+                                    backgroundImage: cssUrl(bannerUrl)
+                                      ? `linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%), ${cssUrl(bannerUrl)}`
                                       : 'none',
                                     backgroundSize: 'cover',
                                     backgroundPosition: 'center',

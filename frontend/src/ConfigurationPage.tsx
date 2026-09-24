@@ -643,6 +643,7 @@ import Button from '@/elements/Button.tsx';
 import TitleCard from '@/elements/TitleCard.tsx';
 import { useToast } from '@/providers/ToastProvider.tsx';
 import { qunixThemeSettingsSchema } from './lib/schemas.ts';
+import { cssUrl } from './lib/validation.ts';
 
 function hslToHex(colorStr: string | undefined | null): string {
   if (!colorStr) return '';
@@ -1357,8 +1358,9 @@ export default function ConfigurationPage() {
       root.style.setProperty('--ds-sidebar-animation', s.sidebar_animation ? '1' : '0');
 
     if (backgroundImage !== undefined) {
-      if (backgroundImage) {
-        root.style.setProperty('--ds-background-image', `url(${backgroundImage})`);
+      const backgroundCss = cssUrl(backgroundImage);
+      if (backgroundCss) {
+        root.style.setProperty('--ds-background-image', backgroundCss);
         root.classList.add('has-bg-image');
         document.body.classList.add('has-bg-image');
       } else {
