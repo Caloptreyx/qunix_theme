@@ -1548,6 +1548,12 @@ export default function ConfigurationPage() {
   ]);
 
   const doSave = () => {
+    const validation = form.validate();
+    if (validation.hasErrors) {
+      addToast(`Fix invalid settings before saving: ${Object.keys(validation.errors).join(', ')}`, 'error');
+      return;
+    }
+
     const payload = {
       background_color: form.values.background_color,
       text_color: form.values.text_color,

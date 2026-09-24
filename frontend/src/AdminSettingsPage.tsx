@@ -1693,6 +1693,12 @@ export default function AdminSettingsPage() {
   };
 
   const doSave = () => {
+    const validation = form.validate();
+    if (validation.hasErrors) {
+      addToast(`Fix invalid settings before saving: ${Object.keys(validation.errors).join(', ')}`, 'error');
+      return;
+    }
+
     const payload = form.values;
     setLoading(true);
     axiosInstance
