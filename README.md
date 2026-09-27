@@ -37,4 +37,6 @@ A premium, highly customizable theme extension for the Calagopus Panel. Control 
 ### 🔗 For support
 
 
-**Get Support:** [Join our Discord](https://discord.gg/qQUyjGZvyj)
+**Original theme support:** [Join the Lemem community Discord](https://discord.gg/qQUyjGZvyj) (run by the original Qunix author, [mrbeeenopro](https://github.com/mrbeeenopro/qunix_theme)).
+
+Need help with this fork or want to request a feature? Join the [Caloptreyx Discord](https://discord.gg/4qjMWU7S8x).

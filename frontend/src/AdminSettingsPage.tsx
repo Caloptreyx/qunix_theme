@@ -621,6 +621,7 @@ function ColorField({ value, onChange, onBlur, label, description, error }: Colo
   );
 }
 
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPalette,
@@ -2008,8 +2009,33 @@ export default function AdminSettingsPage() {
           })}
         </div>
 
-        {/* Bottom: spacer matching the back button so the tabs stay vertically centered */}
-        <div aria-hidden style={{ width: '40px', height: '40px' }} />
+        {/* Bottom: Caloptreyx Discord link (same size as the back button so the tabs stay vertically centered) */}
+        <a
+          href='https://discord.gg/4qjMWU7S8x'
+          target='_blank'
+          rel='noopener noreferrer'
+          title='Support & feature requests'
+          aria-label='Support & feature requests'
+          style={{
+            width: '40px',
+            height: '40px',
+            border: '1px solid transparent',
+            borderRadius: '8px',
+            color: '#71717a',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            transition: 'all 0.2s',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = '#5865f2';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = '#71717a';
+          }}
+        >
+          <FontAwesomeIcon icon={faDiscord} />
+        </a>
       </div>
 
       {/* 2. Middle Form Pane */}

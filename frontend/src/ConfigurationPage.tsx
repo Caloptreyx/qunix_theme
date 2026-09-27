@@ -9,6 +9,7 @@ import {
   useComputedColorScheme,
   FileButton,
   Select,
+  Button as MantineButton,
 } from '@mantine/core';
 
 // Helper to parse Hex, RGB, or HSL strings to HSV
@@ -620,6 +621,7 @@ function ColorField({ value, onChange, onBlur, label, description, error }: Colo
   );
 }
 
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPalette,
@@ -3035,6 +3037,18 @@ export default function ConfigurationPage() {
             >
               Export Theme
             </Button>
+            <MantineButton
+              component='a'
+              href='https://discord.gg/4qjMWU7S8x'
+              target='_blank'
+              rel='noopener noreferrer'
+              variant='light'
+              color='blue'
+              fw='normal'
+              leftSection={<FontAwesomeIcon icon={faDiscord} />}
+            >
+              Support & feature requests
+            </MantineButton>
           </Group>
         </Group>
       </form>
