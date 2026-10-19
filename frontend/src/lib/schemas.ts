@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { CSS_COLOR_MESSAGE, EGG_BANNER_KEY, SAFE_URL_MESSAGE, cssUrl, isCssColor, isSafeUrl } from './validation.ts';
+import { CSS_COLOR_MESSAGE, cssUrl, EGG_BANNER_KEY, isCssColor, isSafeUrl, SAFE_URL_MESSAGE } from './validation.ts';
 
 const color = z.string().refine(isCssColor, CSS_COLOR_MESSAGE);
 const url = z.string().refine(isSafeUrl, SAFE_URL_MESSAGE);
@@ -152,9 +152,7 @@ export function sanitizeThemeSettings<T extends Record<string, any>>(settings: T
   }
   if (clean.egg_banners && typeof clean.egg_banners === 'object') {
     clean.egg_banners = Object.fromEntries(
-      Object.entries(clean.egg_banners).filter(
-        ([egg, banner]) => EGG_BANNER_KEY.test(egg) && cssUrl(banner) !== null,
-      ),
+      Object.entries(clean.egg_banners).filter(([egg, banner]) => EGG_BANNER_KEY.test(egg) && cssUrl(banner) !== null),
     );
   }
 

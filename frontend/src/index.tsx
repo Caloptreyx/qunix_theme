@@ -1,45 +1,45 @@
-import React, { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { useParams, useLocation } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faClock,
-  faMicrochip,
-  faMemory,
-  faHardDrive,
-  faCopy,
-  faCloudDownload,
-  faCloudUpload,
-  faPalette,
   faCircleCheck,
-  faCircleXmark,
   faCircleExclamation,
   faCircleInfo,
+  faCircleXmark,
+  faClock,
+  faCloudDownload,
+  faCloudUpload,
+  faCopy,
+  faHardDrive,
+  faMemory,
+  faMicrochip,
+  faPalette,
 } from '@fortawesome/free-solid-svg-icons';
-import Notification from '@/elements/Notification.tsx';
-import { Extension, ExtensionContext } from 'shared';
-import { useComputedColorScheme, type MantineThemeOverride } from '@mantine/core';
-import { axiosInstance } from '@/api/axios.ts';
-import { useServerStore } from '@/stores/server.ts';
-import { useGlobalStore } from '@/stores/global.ts';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { type MantineThemeOverride, useComputedColorScheme } from '@mantine/core';
 import { useQueryClient } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import { useLocation, useParams } from 'react-router';
+import { Extension, ExtensionContext } from 'shared';
+import { axiosInstance } from '@/api/axios.ts';
+import Alert from '@/elements/Alert.tsx';
+import Notification from '@/elements/Notification.tsx';
 import { queryKeys } from '@/lib/queryKeys.ts';
+import { formatAllocation } from '@/lib/server.ts';
 import { bytesToString, mbToBytes } from '@/lib/size.ts';
 import { formatMilliseconds } from '@/lib/time.ts';
-import { formatAllocation } from '@/lib/server.ts';
-import ConfigurationPage from './ConfigurationPage.tsx';
+import { useGlobalStore } from '@/stores/global.ts';
+import { useServerStore } from '@/stores/server.ts';
+import pkg from '../package.json';
 import AdminSettingsPage from './AdminSettingsPage.tsx';
+import ConfigurationPage from './ConfigurationPage.tsx';
+import { applyFavicon } from './lib/favicon.ts';
 import { sanitizeThemeSettings } from './lib/schemas.ts';
 import { cssUrl, isSafeUrl } from './lib/validation.ts';
-import { applyFavicon } from './lib/favicon.ts';
-import Alert from '@/elements/Alert.tsx';
-import pkg from '../package.json';
 import './app.css';
 
-import { faTrash, faShareNodes, faSliders } from '@fortawesome/free-solid-svg-icons';
-import { useToast } from '@/providers/ToastProvider.tsx';
+import { faShareNodes, faSliders, faTrash } from '@fortawesome/free-solid-svg-icons';
 import ActionIcon from '@/elements/ActionIcon.tsx';
 import Tooltip from '@/elements/Tooltip.tsx';
+import { useToast } from '@/providers/ToastProvider.tsx';
 
 const StatsOverlay: React.FC = () => {
   const { server, stats, state } = useServerStore();
@@ -709,8 +709,10 @@ const QunixThemeLoader: React.FC = () => {
   return null;
 };
 
+const ANSI_ESCAPE_REGEX = new RegExp(`${String.fromCharCode(0x1b)}\\[[0-9;]*[a-zA-Z]`, 'g');
+
 const getLogLevel = (line: string): 'info' | 'warning' | 'error' | 'other' => {
-  const clean = line.replace(/\x1B\[[0-9;]*[a-zA-Z]/g, '').toUpperCase();
+  const clean = line.replace(ANSI_ESCAPE_REGEX, '').toUpperCase();
   if (clean.includes('ERROR') || clean.includes('ERR:') || clean.includes('FATAL') || clean.includes('SEVERE')) {
     return 'error';
   }

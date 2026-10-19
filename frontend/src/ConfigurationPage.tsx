@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
 import {
-  Stack,
+  FileButton,
   Group,
+  Button as MantineButton,
   NumberInput,
-  TextInput,
+  Select,
+  Stack,
   Switch,
   Tabs,
+  TextInput,
   useComputedColorScheme,
-  FileButton,
-  Select,
-  Button as MantineButton,
 } from '@mantine/core';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Helper to parse Hex, RGB, or HSL strings to HSV
 function parseToHsv(colorStr: string): { h: number; s: number; v: number; a: number } {
@@ -622,25 +622,25 @@ function ColorField({ value, onChange, onBlur, label, description, error }: Colo
 }
 
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPalette,
-  faUpload,
-  faDownload,
-  faBullhorn,
   faBell,
-  faCogs,
-  faMagic,
-  faRuler,
-  faSquare,
+  faBullhorn,
   faChartLine,
+  faCogs,
+  faDownload,
+  faMagic,
+  faPalette,
+  faRuler,
   faSliders,
+  faSquare,
+  faUpload,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
 import { z } from 'zod';
-import { httpErrorToHuman, axiosInstance } from '@/api/axios.ts';
 import getAllEggs from '@/api/admin/nests/getAllEggs.ts';
+import { axiosInstance, httpErrorToHuman } from '@/api/axios.ts';
 import Button from '@/elements/Button.tsx';
 import TitleCard from '@/elements/TitleCard.tsx';
 import { useToast } from '@/providers/ToastProvider.tsx';

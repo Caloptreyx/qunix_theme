@@ -1,16 +1,16 @@
-import React, { useEffect, useState, useRef } from 'react';
 import {
-  Stack,
+  FileButton,
   Group,
   NumberInput,
-  TextInput,
-  Switch,
-  Tabs,
-  FileButton,
-  useComputedColorScheme,
   ScrollArea,
   Select,
+  Stack,
+  Switch,
+  Tabs,
+  TextInput,
+  useComputedColorScheme,
 } from '@mantine/core';
+import React, { useEffect, useRef, useState } from 'react';
 
 // Helper to parse Hex, RGB, or HSL strings to HSV
 function parseToHsv(colorStr: string): { h: number; s: number; v: number; a: number } {
@@ -622,37 +622,37 @@ function ColorField({ value, onChange, onBlur, label, description, error }: Colo
 }
 
 import { faDiscord } from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faPalette,
-  faCogs,
-  faWindowMaximize,
-  faImage,
   faArrowLeft,
-  faUpload,
-  faDownload,
-  faRotateLeft,
-  faBullhorn,
-  faRoute,
-  faSliders,
   faBolt,
-  faTerminal,
+  faBullhorn,
   faChartLine,
-  faRuler,
+  faCogs,
   faColumns,
-  faMagic,
-  faSquare,
-  faFont,
-  faFolder,
-  faLink,
   faDatabase,
+  faDownload,
+  faFolder,
+  faFont,
+  faImage,
+  faLink,
+  faMagic,
+  faPalette,
+  faRotateLeft,
+  faRoute,
+  faRuler,
+  faSliders,
+  faSquare,
+  faTerminal,
+  faUpload,
+  faWindowMaximize,
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useForm } from '@mantine/form';
 import { zodResolver } from 'mantine-form-zod-resolver';
+import { useLocation, useNavigate } from 'react-router';
 import { z } from 'zod';
-import { useNavigate, useLocation } from 'react-router';
-import { httpErrorToHuman, axiosInstance } from '@/api/axios.ts';
 import getAllEggs from '@/api/admin/nests/getAllEggs.ts';
+import { axiosInstance, httpErrorToHuman } from '@/api/axios.ts';
 import Button from '@/elements/Button.tsx';
 import { useToast } from '@/providers/ToastProvider.tsx';
 import { qunixThemeSettingsSchema } from './lib/schemas.ts';
