@@ -1574,7 +1574,7 @@ export default function AdminSettingsPage() {
       root.setAttribute('data-sidebar-hover-style', s.sidebar_hover_style || 'style-1');
 
       (iframeDoc.defaultView as any).qunixThemeSettings = {
-        ...((iframeDoc.defaultView as any).qunixThemeSettings || {}),
+        ...(iframeDoc.defaultView as any).qunixThemeSettings,
         toast_style: s.toast_style,
         toast_timer: s.toast_timer,
         toast_radius: s.toast_radius,
@@ -1883,7 +1883,7 @@ export default function AdminSettingsPage() {
         }
         form.setValues(result.data);
         addToast('Theme configuration imported.', 'success');
-      } catch (err) {
+      } catch {
         addToast('Failed to parse config file.', 'error');
       }
     };
@@ -1903,7 +1903,7 @@ export default function AdminSettingsPage() {
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
       addToast('Theme settings exported.', 'success');
-    } catch (err) {
+    } catch {
       addToast('Failed to export.', 'error');
     }
   };

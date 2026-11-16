@@ -1,7 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  --ds-font-family: "JetBrains Mono", monospace;
+  --ds-font-family: 'JetBrains Mono', monospace;
   --ds-background: #1a1b26;
   --ds-sidebar-bg: #16161e;
   --ds-navbar-bg: #1f2335;
@@ -88,7 +88,7 @@ main,
 section {
   background-color: var(--ds-background) !important;
   color: var(--ds-gray-900) !important;
-  font-family: var(--ds-font-family), "JetBrains Mono", monospace !important;
+  font-family: var(--ds-font-family), 'JetBrains Mono', monospace !important;
 }
 
 html.has-bg-image,
@@ -103,7 +103,7 @@ body.has-bg-image,
 }
 
 html.has-bg-image::before {
-  content: "";
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -114,7 +114,7 @@ html.has-bg-image::before {
 }
 
 html.has-bg-image::after {
-  content: "";
+  content: '';
   position: fixed;
   top: 0;
   left: 0;
@@ -132,7 +132,7 @@ html.has-bg-image::after {
 }
 
 * {
-  font-family: var(--ds-font-family), "JetBrains Mono", monospace !important;
+  font-family: var(--ds-font-family), 'JetBrains Mono', monospace !important;
 }
 
 /* 2. General Surfaces */
@@ -256,11 +256,11 @@ body.has-bg-image .mantine-Drawer-inner .mantine-Paper-root {
   --mantine-color-red-filled-hover: color-mix(in srgb, var(--ds-power-stop-bg, #fa5252) 85%, white) !important;
 }
 
-[id="title-card-header"] {
+[id='title-card-header'] {
   background-color: var(--ds-navbar-bg) !important;
 }
 
-body.has-bg-image [id="title-card-header"],
+body.has-bg-image [id='title-card-header'],
 body.has-bg-image .mantine-AppShell-header {
   background-color: color-mix(in srgb, var(--ds-navbar-bg), transparent var(--ds-glass-transparency)) !important;
 }
@@ -376,10 +376,10 @@ body.has-bg-image .mantine-Table-scrollContainer {
 }
 
 /* Style 1: Right Indicator (Default style) */
-html[data-sidebar-hover-style="style-1"] .mantine-NavLink-root,
-html[data-sidebar-hover-style="style-1"] .sidebar a .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] #sidebar-content a .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a .mantine-Button-root {
+html[data-sidebar-hover-style='style-1'] .mantine-NavLink-root,
+html[data-sidebar-hover-style='style-1'] .sidebar a .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] #sidebar-content a .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] .mantine-AppShell-navbar a .mantine-Button-root {
   position: relative !important;
   margin-left: 8px !important;
   margin-right: 8px !important;
@@ -391,21 +391,21 @@ html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a .mantine-But
   border-bottom: none !important;
 }
 
-html[data-sidebar-hover-style="style-1"] .mantine-NavLink-root:hover,
-html[data-sidebar-hover-style="style-1"] .sidebar a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] #sidebar-content a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a:hover .mantine-Button-root {
+html[data-sidebar-hover-style='style-1'] .mantine-NavLink-root:hover,
+html[data-sidebar-hover-style='style-1'] .sidebar a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] #sidebar-content a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] .mantine-AppShell-navbar a:hover .mantine-Button-root {
   background: linear-gradient(to left, rgba(255, 255, 255, 0.02) 0%, transparent 100%) !important;
   border-right-color: rgba(255, 255, 255, 0.1) !important;
 }
 
-html[data-sidebar-hover-style="style-1"] .mantine-NavLink-root[data-active],
-html[data-sidebar-hover-style="style-1"] .sidebar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] #sidebar-content a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-1"] .sidebar a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-1"] #sidebar-content a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a .mantine-Button-root.active {
+html[data-sidebar-hover-style='style-1'] .mantine-NavLink-root[data-active],
+html[data-sidebar-hover-style='style-1'] .sidebar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] #sidebar-content a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] .mantine-AppShell-navbar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-1'] .sidebar a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-1'] #sidebar-content a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-1'] .mantine-AppShell-navbar a .mantine-Button-root.active {
   background: linear-gradient(
     to left,
     color-mix(in srgb, var(--ds-sidebar-active-bg) 20%, transparent) 0%,
@@ -422,10 +422,10 @@ html[data-sidebar-hover-style="style-1"] .mantine-AppShell-navbar a .mantine-But
 }
 
 /* Style 2: Left Pill Indicator */
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root,
-html[data-sidebar-hover-style="style-2"] .sidebar a .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-Button-root {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root,
+html[data-sidebar-hover-style='style-2'] .sidebar a .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a .mantine-Button-root {
   position: relative !important;
   margin-left: 10px !important;
   margin-right: 10px !important;
@@ -434,11 +434,11 @@ html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-But
   border: 1px solid transparent !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root::after,
-html[data-sidebar-hover-style="style-2"] .sidebar a .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-Button-root::after {
-  content: "" !important;
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root::after,
+html[data-sidebar-hover-style='style-2'] .sidebar a .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a .mantine-Button-root::after {
+  content: '' !important;
   position: absolute !important;
   left: 6px !important;
   top: 50% !important;
@@ -453,58 +453,58 @@ html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-But
   z-index: 10 !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root .mantine-NavLink-icon,
-html[data-sidebar-hover-style="style-2"] .sidebar a .mantine-Button-root .mantine-Button-inner,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a .mantine-Button-root .mantine-Button-inner,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-Button-root .mantine-Button-inner {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root .mantine-NavLink-icon,
+html[data-sidebar-hover-style='style-2'] .sidebar a .mantine-Button-root .mantine-Button-inner,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a .mantine-Button-root .mantine-Button-inner,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a .mantine-Button-root .mantine-Button-inner {
   padding-left: 10px !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root:hover,
-html[data-sidebar-hover-style="style-2"] .sidebar a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a:hover .mantine-Button-root {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root:hover,
+html[data-sidebar-hover-style='style-2'] .sidebar a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a:hover .mantine-Button-root {
   background: rgba(255, 255, 255, 0.02) !important;
   border-color: rgba(255, 255, 255, 0.05) !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root:hover::after,
-html[data-sidebar-hover-style="style-2"] .sidebar a:hover .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a:hover .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a:hover .mantine-Button-root::after {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root:hover::after,
+html[data-sidebar-hover-style='style-2'] .sidebar a:hover .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a:hover .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a:hover .mantine-Button-root::after {
   transform: translateY(-50%) scaleY(0.6) !important;
   background-color: rgba(255, 255, 255, 0.3) !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root[data-active],
-html[data-sidebar-hover-style="style-2"] .sidebar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-2"] .sidebar a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-Button-root.active {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root[data-active],
+html[data-sidebar-hover-style='style-2'] .sidebar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-2'] .sidebar a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a .mantine-Button-root.active {
   background: rgba(255, 255, 255, 0.04) !important;
   border-color: rgba(255, 255, 255, 0.08) !important;
   color: var(--ds-sidebar-active-color) !important;
   border-radius: var(--ds-sidebar-active-radius, 8px) !important;
 }
 
-html[data-sidebar-hover-style="style-2"] .mantine-NavLink-root[data-active]::after,
-html[data-sidebar-hover-style="style-2"] .sidebar a.active .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a.active .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a.active .mantine-Button-root::after,
-html[data-sidebar-hover-style="style-2"] .sidebar a .mantine-Button-root.active::after,
-html[data-sidebar-hover-style="style-2"] #sidebar-content a .mantine-Button-root.active::after,
-html[data-sidebar-hover-style="style-2"] .mantine-AppShell-navbar a .mantine-Button-root.active::after {
+html[data-sidebar-hover-style='style-2'] .mantine-NavLink-root[data-active]::after,
+html[data-sidebar-hover-style='style-2'] .sidebar a.active .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a.active .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a.active .mantine-Button-root::after,
+html[data-sidebar-hover-style='style-2'] .sidebar a .mantine-Button-root.active::after,
+html[data-sidebar-hover-style='style-2'] #sidebar-content a .mantine-Button-root.active::after,
+html[data-sidebar-hover-style='style-2'] .mantine-AppShell-navbar a .mantine-Button-root.active::after {
   transform: translateY(-50%) scaleY(1) !important;
   background-color: var(--ds-sidebar-active-color) !important;
 }
 
 /* Style 3: Floating Inset Pill */
-html[data-sidebar-hover-style="style-3"] .mantine-NavLink-root,
-html[data-sidebar-hover-style="style-3"] .sidebar a .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] #sidebar-content a .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a .mantine-Button-root {
+html[data-sidebar-hover-style='style-3'] .mantine-NavLink-root,
+html[data-sidebar-hover-style='style-3'] .sidebar a .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] #sidebar-content a .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] .mantine-AppShell-navbar a .mantine-Button-root {
   position: relative !important;
   margin-left: 14px !important;
   margin-right: 14px !important;
@@ -513,20 +513,20 @@ html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a .mantine-But
   border: none !important;
 }
 
-html[data-sidebar-hover-style="style-3"] .mantine-NavLink-root:hover,
-html[data-sidebar-hover-style="style-3"] .sidebar a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] #sidebar-content a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a:hover .mantine-Button-root {
+html[data-sidebar-hover-style='style-3'] .mantine-NavLink-root:hover,
+html[data-sidebar-hover-style='style-3'] .sidebar a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] #sidebar-content a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] .mantine-AppShell-navbar a:hover .mantine-Button-root {
   background-color: rgba(255, 255, 255, 0.03) !important;
 }
 
-html[data-sidebar-hover-style="style-3"] .mantine-NavLink-root[data-active],
-html[data-sidebar-hover-style="style-3"] .sidebar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] #sidebar-content a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-3"] .sidebar a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-3"] #sidebar-content a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a .mantine-Button-root.active {
+html[data-sidebar-hover-style='style-3'] .mantine-NavLink-root[data-active],
+html[data-sidebar-hover-style='style-3'] .sidebar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] #sidebar-content a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] .mantine-AppShell-navbar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-3'] .sidebar a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-3'] #sidebar-content a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-3'] .mantine-AppShell-navbar a .mantine-Button-root.active {
   background-color: var(--ds-sidebar-active-bg) !important;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   color: var(--ds-sidebar-active-color) !important;
@@ -535,10 +535,10 @@ html[data-sidebar-hover-style="style-3"] .mantine-AppShell-navbar a .mantine-But
 }
 
 /* Style 4: Flat Full-width */
-html[data-sidebar-hover-style="style-4"] .mantine-NavLink-root,
-html[data-sidebar-hover-style="style-4"] .sidebar a .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] #sidebar-content a .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-Button-root {
+html[data-sidebar-hover-style='style-4'] .mantine-NavLink-root,
+html[data-sidebar-hover-style='style-4'] .sidebar a .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] #sidebar-content a .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] .mantine-AppShell-navbar a .mantine-Button-root {
   position: relative !important;
   margin-left: -12px !important;
   margin-right: -12px !important;
@@ -547,20 +547,20 @@ html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-But
   border: none !important;
 }
 
-html[data-sidebar-hover-style="style-4"] .mantine-NavLink-root:hover,
-html[data-sidebar-hover-style="style-4"] .sidebar a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] #sidebar-content a:hover .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a:hover .mantine-Button-root {
+html[data-sidebar-hover-style='style-4'] .mantine-NavLink-root:hover,
+html[data-sidebar-hover-style='style-4'] .sidebar a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] #sidebar-content a:hover .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] .mantine-AppShell-navbar a:hover .mantine-Button-root {
   background-color: rgba(255, 255, 255, 0.02) !important;
 }
 
-html[data-sidebar-hover-style="style-4"] .mantine-NavLink-root[data-active],
-html[data-sidebar-hover-style="style-4"] .sidebar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] #sidebar-content a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a.active .mantine-Button-root,
-html[data-sidebar-hover-style="style-4"] .sidebar a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-4"] #sidebar-content a .mantine-Button-root.active,
-html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-Button-root.active {
+html[data-sidebar-hover-style='style-4'] .mantine-NavLink-root[data-active],
+html[data-sidebar-hover-style='style-4'] .sidebar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] #sidebar-content a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] .mantine-AppShell-navbar a.active .mantine-Button-root,
+html[data-sidebar-hover-style='style-4'] .sidebar a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-4'] #sidebar-content a .mantine-Button-root.active,
+html[data-sidebar-hover-style='style-4'] .mantine-AppShell-navbar a .mantine-Button-root.active {
   background-color: var(--ds-sidebar-active-bg) !important;
   color: var(--ds-sidebar-active-color) !important;
   border-color: transparent !important;
@@ -568,7 +568,7 @@ html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-But
 
 /* Click Animation */
 .mantine-NavLink-root::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -616,12 +616,12 @@ html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-But
 .terminal-window {
   background-color: var(--ds-terminal-bg) !important;
   color: var(--ds-terminal-text) !important;
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .xterm-rows,
 .xterm-rows * {
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .xterm .xterm-selection div {
@@ -682,10 +682,10 @@ html[data-sidebar-hover-style="style-4"] .mantine-AppShell-navbar a .mantine-But
 
 .cm-editor,
 .cm-scroller,
-[class*="monaco-editor"] {
+[class*='monaco-editor'] {
   background-color: var(--ds-editor-bg) !important;
   color: var(--ds-editor-text) !important;
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 .xterm-rows {
@@ -696,10 +696,10 @@ code,
 pre,
 .xterm,
 .xterm *,
-[class*="monaco"],
+[class*='monaco'],
 .cm-editor,
 .cm-editor * {
-  font-family: "JetBrains Mono", monospace !important;
+  font-family: 'JetBrains Mono', monospace !important;
 }
 
 /* Fix some stuff */
@@ -731,7 +731,7 @@ h3,
   pre,
   .xterm,
   .xterm *,
-  [class*="monaco"],
+  [class*='monaco'],
   .cm-editor,
   .cm-editor *,
   .fa,
@@ -756,7 +756,7 @@ img,
 .fas,
 .far,
 .fab,
-[class*="icon"] {
+[class*='icon'] {
   vertical-align: middle !important;
   background-color: transparent !important;
 }
@@ -840,7 +840,7 @@ html.has-server-banner #console-infobar button {
 }
 
 html.has-server-banner #console-infobar::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -891,7 +891,7 @@ html.has-server-banner #console-infobar text {
   padding: 6px 12px !important;
   border-radius: var(--ds-border-radius, 8px) !important;
   font-size: 11px !important;
-  font-family: var(--ds-font-family), "JetBrains Mono", monospace !important;
+  font-family: var(--ds-font-family), 'JetBrains Mono', monospace !important;
   color: rgba(255, 255, 255, 0.9) !important;
   width: fit-content !important;
   backdrop-filter: blur(4px) !important;
@@ -936,7 +936,7 @@ html.has-server-banner #console-infobar text {
   padding: 6px 12px !important;
   border-radius: var(--ds-border-radius, 8px) !important;
   font-size: 12px !important;
-  font-family: var(--ds-font-family), "JetBrains Mono", monospace !important;
+  font-family: var(--ds-font-family), 'JetBrains Mono', monospace !important;
   color: #ffffff !important;
   cursor: pointer !important;
   backdrop-filter: blur(4px) !important;
@@ -983,10 +983,10 @@ html.has-server-banner #console-infobar text {
 }
 
 /* Dimmed / description labels inside card */
-.qunix-server-card.has-banner p[class*="dimmed"],
-.qunix-server-card.has-banner span[class*="dimmed"],
-.qunix-server-card.has-banner p[class*="text-"],
-.qunix-server-card.has-banner span[class*="text-"] {
+.qunix-server-card.has-banner p[class*='dimmed'],
+.qunix-server-card.has-banner span[class*='dimmed'],
+.qunix-server-card.has-banner p[class*='text-'],
+.qunix-server-card.has-banner span[class*='text-'] {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
@@ -1194,18 +1194,18 @@ html.has-server-banner #console-infobar text {
 }
 
 /* Light mode overrides for filter tabs */
-html[data-mantine-color-scheme="light"] .qunix-console-filter-tab {
+html[data-mantine-color-scheme='light'] .qunix-console-filter-tab {
   background: rgba(0, 0, 0, 0.04) !important;
   border: 1px solid rgba(0, 0, 0, 0.08) !important;
   color: #5f27cd !important;
 }
 
-html[data-mantine-color-scheme="light"] .qunix-console-filter-tab:hover {
+html[data-mantine-color-scheme='light'] .qunix-console-filter-tab:hover {
   background: rgba(0, 0, 0, 0.08) !important;
   color: #341f97 !important;
 }
 
-html[data-mantine-color-scheme="light"] .qunix-console-filter-tab.active {
+html[data-mantine-color-scheme='light'] .qunix-console-filter-tab.active {
   background: var(--ds-announcement-cta-bg, #6c5ce7) !important;
   border-color: var(--ds-announcement-cta-bg, #6c5ce7) !important;
   color: #ffffff !important;

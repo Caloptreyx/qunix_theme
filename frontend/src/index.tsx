@@ -12,6 +12,7 @@ import {
   faMicrochip,
   faPalette,
 } from '@fortawesome/free-solid-svg-icons';
+import { faShareNodes, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { type MantineThemeOverride, useComputedColorScheme } from '@mantine/core';
 import { useQueryClient } from '@tanstack/react-query';
@@ -20,26 +21,24 @@ import { createPortal } from 'react-dom';
 import { useLocation, useParams } from 'react-router';
 import { Extension, ExtensionContext } from 'shared';
 import { axiosInstance } from '@/api/axios.ts';
+import ActionIcon from '@/elements/ActionIcon.tsx';
 import Alert from '@/elements/Alert.tsx';
 import Notification from '@/elements/Notification.tsx';
+import Tooltip from '@/elements/Tooltip.tsx';
 import { queryKeys } from '@/lib/queryKeys.ts';
 import { formatAllocation } from '@/lib/server.ts';
 import { bytesToString, mbToBytes } from '@/lib/size.ts';
 import { formatMilliseconds } from '@/lib/time.ts';
+import { useToast } from '@/providers/ToastProvider.tsx';
 import { useGlobalStore } from '@/stores/global.ts';
 import { useServerStore } from '@/stores/server.ts';
 import pkg from '../package.json';
 import AdminSettingsPage from './AdminSettingsPage.tsx';
+import './app.css';
 import ConfigurationPage from './ConfigurationPage.tsx';
 import { applyFavicon } from './lib/favicon.ts';
 import { sanitizeThemeSettings } from './lib/schemas.ts';
 import { cssUrl, isSafeUrl } from './lib/validation.ts';
-import './app.css';
-
-import { faShareNodes, faSliders, faTrash } from '@fortawesome/free-solid-svg-icons';
-import ActionIcon from '@/elements/ActionIcon.tsx';
-import Tooltip from '@/elements/Tooltip.tsx';
-import { useToast } from '@/providers/ToastProvider.tsx';
 
 const StatsOverlay: React.FC = () => {
   const { server, stats, state } = useServerStore();
@@ -290,13 +289,13 @@ async function loadFontCSPFriendly(fontName: string) {
         const fontBlob = await fontRes.blob();
         const blobUrl = URL.createObjectURL(fontBlob);
         cssText = cssText.replaceAll(originalUrl, blobUrl);
-      } catch (_err) {
+      } catch {
         // ignore individual font file errors
       }
     }
 
     placeholder.innerHTML = cssText;
-  } catch (_err) {
+  } catch {
     // font load failed silently
   }
 }

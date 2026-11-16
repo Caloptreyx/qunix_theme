@@ -626,7 +626,6 @@ import {
   faBell,
   faBullhorn,
   faChartLine,
-  faCogs,
   faDownload,
   faMagic,
   faPalette,
@@ -1409,7 +1408,7 @@ export default function ConfigurationPage() {
       root.style.setProperty('--ds-announcement-cta-radius', `${s.announcement_cta_radius}px`);
 
     (window as any).qunixThemeSettings = {
-      ...((window as any).qunixThemeSettings || {}),
+      ...(window as any).qunixThemeSettings,
       toast_style: s.toast_style,
       toast_timer: s.toast_timer,
       toast_radius: s.toast_radius,
@@ -1837,7 +1836,7 @@ export default function ConfigurationPage() {
     setLoading(true);
     axiosInstance
       .put('/api/admin/extensions/dev.qunix.theme/settings', defaultSettings)
-      .then((res) => {
+      .then(() => {
         form.setInitialValues(defaultSettings);
         form.resetDirty(defaultSettings);
         addToast('Theme settings reset to default. Refresh the page to apply.', 'success');
